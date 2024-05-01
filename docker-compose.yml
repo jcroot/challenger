@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+#  backend:
+#    build: .
+#    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+#    volumes:
+#      - .:/usr/src/app
+#    ports:
+#      - "8000:8000"
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=trafficdb
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=changeme!
+    volumes:
+      - 'pgsql:/var/lib/postgresql/data'
+    ports:
+      - "5432:5432"
+    networks:
+      - default
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "inspektdb", "-U", "postgres" ]
+      retries: 3
+      timeout: 5s
+  mailhog:
+    platform: linux/x86_64
+    image: 'mailhog/mailhog:latest'
+    ports:
+      - 1025:1025
+      - 8025:8025
+    networks:
+      - default
+
+networks:
+    default:
+      driver: bridge
+volumes:
+  pgsql:
+    driver: local
