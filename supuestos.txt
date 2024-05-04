@@ -1,0 +1,13 @@
+Supuestos:
+- En los requerimientos se pide registrar los vehiculos de una persona, con datos de la marca, pero no se especifica si la marca es referencial o cada vez que
+se agrega un nuevo vehiculo el usuario admin, debe cargar ese dato. Para ese caso, se crea una entidad de marcas, para relacionar con el vehiculo, asi el usuario
+solo agrega numero de patente y relaciona con la marca. Para los colores, se agrega una constante de Colors para que seleccione los colores primarios o basicos
+
+- El oficial podra autenticarse con su correo o con su numero identificatorio? Para este caso, en la interfaz del oficial, agregamos su numero identificatorio y clave,
+ya que por usabilidad, es mas facil identificar usuario con un numero unico.
+
+- Para el caso de las infracciones, se agrega una entidad de tipos de infracciones, a fin de que el oficial pueda hacer una busqueda a la hora de aplicar infracciones a un
+vehiculo. La cuestion que un vehiculo puede infrigir mas de una infraccion, como por ejemplo: Paso luz roja, Licencia vencida y luces de giro. Para este problema,
+aplicar una entidad de items, que permite listar n cantidades de infracciones.
+
+- Al hacer la consulta en generar_informe, se valida que el correo exista o que sea valido

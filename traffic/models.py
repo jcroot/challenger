@@ -58,4 +58,4 @@ class TrafficViolation(models.Model):
     timestamp = models.DateTimeField()
 
     def __str__(self):
-        return self.plate_number
+        return self.plate_number.plate_number
