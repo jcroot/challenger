@@ -21,18 +21,9 @@ services:
     networks:
       - default
     healthcheck:
-      test: [ "CMD", "pg_isready", "-q", "-d", "inspektdb", "-U", "postgres" ]
+      test: [ "CMD", "pg_isready", "-q", "-d", "trafficdb", "-U", "myuser" ]
       retries: 3
       timeout: 5s
-  mailhog:
-    platform: linux/x86_64
-    image: 'mailhog/mailhog:latest'
-    ports:
-      - 1025:1025
-      - 8025:8025
-    networks:
-      - default
-
 networks:
     default:
       driver: bridge
