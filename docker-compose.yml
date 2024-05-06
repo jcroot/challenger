@@ -5,7 +5,7 @@ services:
     build:
         context: .
         dockerfile: ./docker/Dockerfile
-    image: challenger/app
+    image: arrobasoft/challenger
     command: ["./docker/wait-for-db.sh", "db", "./manage.py", "runserver", "0.0.0.0:8000"]
     volumes:
       - .:/code
